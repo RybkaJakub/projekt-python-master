@@ -1,17 +1,24 @@
 import random
 
+min = 0
+max = 100
+minNasobeni = 0
+maxNasobeni = 10
+
 def generuj_test(pocet_otazek):
     for i in range(pocet_otazek):
-        cislo1 = random.randint(1, 10)
-        cislo2 = random.randint(1, 10)
         operator = random.choice(['+', '-', '*'])
-
-        if operator == '+':
-            spravna_odpoved = cislo1 + cislo2
-        elif operator == '-':
-            spravna_odpoved = cislo1 - cislo2
-        elif operator == '*':
+        if operator == '*':
+            cislo1 = random.randint(minNasobeni, maxNasobeni)
+            cislo2 = random.randint(minNasobeni, maxNasobeni)
             spravna_odpoved = cislo1 * cislo2
+        else:
+            cislo1 = random.randint(min, max)
+            cislo2 = random.randint(min, max)
+            if operator == '+':
+                spravna_odpoved = cislo1 + cislo2
+            elif operator == '-':
+                spravna_odpoved = cislo1 - cislo2
 
         otazka = f"{cislo1} {operator} {cislo2} = ?"
         yield otazka, spravna_odpoved
